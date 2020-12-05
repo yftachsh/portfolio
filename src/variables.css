@@ -1,0 +1,11 @@
+:root {
+    --white: 220, 221, 225;
+    --darkblue: 25, 42, 86;
+    --lightblue: 0, 151, 230;
+    --black: 47, 54, 64;
+
+    --bg-page: rgba(var(--black), .9);
+    --bg-main: rgba(var(--darkblue), 0.75);
+    --border-main: rgba(var(--lightblue), 0.75);
+    --font-main: rgba(var(--white), 1);
+}
