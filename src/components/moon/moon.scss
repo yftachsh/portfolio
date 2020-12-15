@@ -1,0 +1,79 @@
+@import '../../variables.scss';
+
+.moon-context-menu {
+    position: absolute;
+
+    top: 45px;
+    left: 30%;
+
+    background: rgba(var(--star-white), 0.7);
+    z-index: 1;
+    list-style-type: none;
+
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 5px;
+
+    .moon-context-item {
+        .moon-link {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .moon-volume {
+            border: none;
+            background: none;
+            appearance: textfield;
+        }
+    }
+}
+
+#moon {
+    position: absolute;
+
+    top: 45px;
+    left: 30%;
+
+    height: 120px;
+    width: auto;
+
+    animation: moon-jiggle $initial-animation-duration;
+    transition: transform .5s, box-shadow .5s;
+    border-radius: 50%;
+
+    &.active {
+        animation: moon-rotate 5s linear infinite;
+    }
+
+    &:hover {
+        transform: rotate(10deg);
+        box-shadow: 0 0 30px rgba(var(--star-white), 0.7),
+                    0 0 30px rgba(var(--star-white), 0.7) inset;
+        cursor: pointer;
+    }
+}
+
+@keyframes moon-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moon-jiggle {
+    0%{ 
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

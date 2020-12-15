@@ -1,0 +1,118 @@
+@import '../../variables.scss';
+
+$star-height: $content-top-margin;
+
+.background {
+    --star-white: 238, 238, 238;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: linear-gradient(
+        rgb(7, 11, 32) $content-top-margin,
+        rgba(var(--star-white), 1) 5%
+    );
+
+    #content {
+        position: absolute;
+
+        opacity: 0;
+        animation: content-in $initial-animation-duration forwards;
+        animation-delay: $initial-animation-duration;
+
+        top: $content-top-margin + $star-height;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    #hole {
+        position: absolute;
+
+        top: $star-height;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        background: rgb(7, 11, 32);
+
+        padding-top: $content-top-margin;
+
+        clip-path: ellipse(150px 150px at 50% 0);
+
+        animation: hole-in $initial-animation-duration;
+
+        @media only screen and (max-width: 600px) {
+            clip-path: ellipse(50% 200px at 50% 0);
+        }
+    }
+
+    #rocket {
+        position: absolute;
+
+        top: $star-height;
+        left: 50%;
+        transform: translate(-50%, 0);
+        z-index: 1;
+
+        height: 120px;
+        width: auto;
+
+        animation: rocket-in ($initial-animation-duration * 2) forwards;
+    }
+
+    .star {
+        height: 2px;
+        width: 2px;
+
+        background: rgba(var(--star-white), 0.7);
+        box-shadow: 0 0 5px rgba(var(--star-white), 0.7);
+        position: absolute;
+        border-radius: 50%;
+
+        @for $i from 1 through 200 {
+            &:nth-child(#{$i}) { 
+              top: random(200) + px;
+              left: random(1900) + px;
+            }
+          }
+    }
+}
+
+@keyframes rocket-in {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 150%);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translate(-50%, 150%);
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes hole-in {
+    0% {
+        clip-path: ellipse(100% 200% at 50% 0);
+    }
+
+    100% {
+        clip-path: ellipse(150px 150px at 50% 0);
+    }
+}
+
+@keyframes content-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

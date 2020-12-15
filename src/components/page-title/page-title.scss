@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Coda+Caption:800');
+
+/*
+    Credit to - Martin Pitt
+    Original on codepen - https://codepen.io/nexii/pen/QVwpvP
+*/
+
+.page-title {
+  text-align: center;
+  font-family: 'Coda Caption', sans-serif;
+  font-weight: 800;
+  font-size: calc(20vw / var(--word-total));
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  transform: perspective(300px) scaleY(1.5) rotateX(-40deg);
+  transform-style: preserve-3d;
+  --layer-depth: 0.32em;
+}
+
+.page-title .word {
+  position: relative;
+  display: inline-block;
+  white-space: pre;
+  color: yellow;
+  font-size: calc(((var(--line-index) + 1) * 25%) + 50%);
+  text-shadow: 0.06em 0 black, 0.06em 0.06em black, 0 0.06em black, -0.06em 0.06em black, -0.06em 0 black, -0.06em -0.06em black, 0 -0.06em black, 0.06em -0.06em black;
+  transform-style: preserve-3d;
+  text-transform: uppercase;
+}
+
+.page-title .word::before,
+.page-title .word::after {
+  content: attr(data-word);
+  position: absolute;
+  top: auto;
+  left: 0;
+  bottom: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.page-title .word::before {
+  color: red;
+  text-shadow: 0.02em 0 black, 0.02em 0.02em black, 0 0.02em black, -0.02em 0.02em black, -0.02em 0 black, -0.02em -0.02em black, 0 -0.02em black, 0.02em -0.02em black;
+  transform: translateZ(calc(var(--layer-depth) * -0.5));
+}
+
+.page-title .word::after {
+  color: black;
+  text-shadow: none;
+  transform: translateZ(calc(var(--layer-depth) * -1));
+}
+
+.page-title {
+  --min-font-size: 64;
+  --max-font-size: 128;
+  font-size: calc(var(--min-font-size) * 1px);
+}
+
+@media screen and (min-width: 320px) {
+  .page-title {
+    font-size: calc(var(--min-font-size) * 1px + (var(--max-font-size) - var(--min-font-size)) * ((100vw - 320px) / 680));
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .page-title {
+    font-size: calc(var(--max-font-size) * 1px);
+  }
+}

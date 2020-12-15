@@ -1,0 +1,36 @@
+.app {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .title-wrapper {
+        animation: title-in 1s forwards;
+        animation-delay: 1s;
+    }
+
+    #see-more {
+        border: none;
+        background: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+    }
+}
+
+@keyframes title-in {
+    0%{ 
+        transform: translateX(-500px);
+    }
+
+    50%{ 
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
